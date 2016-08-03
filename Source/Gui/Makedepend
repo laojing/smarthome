@@ -1,0 +1,33 @@
+/home/laojing/Projects/TurbLogic/Object/Tools/ClassData.o: \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ClassData.c \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ProjectData.h
+/home/laojing/Projects/TurbLogic/Object/Tools/ReadXml.o: \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ReadXml.c \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ProjectData.h
+/home/laojing/Projects/TurbLogic/Object/Tools/ProjectData.o: \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ProjectData.c \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ProjectData.h
+/home/laojing/Projects/TurbLogic/Object/Tools/ObjectData.o: \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ObjectData.c \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ProjectData.h
+/home/laojing/Projects/TurbLogic/Object/Tools/StringData.o: \
+ /home/laojing/Projects/TurbLogic/Source/Tools/StringData.c \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ProjectData.h
+/home/laojing/Projects/TurbLogic/Object/Tools/WriteXml.o: \
+ /home/laojing/Projects/TurbLogic/Source/Tools/WriteXml.c \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ProjectData.h
+/home/laojing/Projects/TurbLogic/Object/Tools/ItemData.o: \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ItemData.c \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ProjectData.h
+/home/laojing/Projects/TurbLogic/Object/Tools/StrData.o: \
+ /home/laojing/Projects/TurbLogic/Source/Tools/StrData.c \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ProjectData.h
+/home/laojing/Projects/TurbLogic/Object/Tools/IdName.o: \
+ /home/laojing/Projects/TurbLogic/Source/Tools/IdName.c \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ProjectData.h
+/home/laojing/Projects/TurbLogic/Object/Tools/FreeData.o: \
+ /home/laojing/Projects/TurbLogic/Source/Tools/FreeData.c \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ProjectData.h
+/home/laojing/Projects/TurbLogic/Object/Tools/PropData.o: \
+ /home/laojing/Projects/TurbLogic/Source/Tools/PropData.c \
+ /home/laojing/Projects/TurbLogic/Source/Tools/ProjectData.h

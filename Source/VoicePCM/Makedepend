@@ -1,0 +1,15 @@
+/home/laojing/Projects/SmartHome/Object/VoicePCM/Text2Voice.o:  \
+ /home/laojing/Projects/SmartHome/Source/VoicePCM/Text2Voice.c \
+  /home/laojing/Projects/SmartHome/Source/VoicePCM/VoicePCM.h
+/home/laojing/Projects/SmartHome/Object/VoicePCM/VoiceThread.o:  \
+ /home/laojing/Projects/SmartHome/Source/VoicePCM/VoiceThread.c \
+  /home/laojing/Projects/SmartHome/Source/VoicePCM/VoicePCM.h
+/home/laojing/Projects/SmartHome/Object/VoicePCM/VoiceMp3Files.o:  \
+ /home/laojing/Projects/SmartHome/Source/VoicePCM/VoiceMp3Files.c \
+  /home/laojing/Projects/SmartHome/Source/VoicePCM/VoicePCM.h
+/home/laojing/Projects/SmartHome/Object/VoicePCM/BaiduToken.o:  \
+ /home/laojing/Projects/SmartHome/Source/VoicePCM/BaiduToken.c \
+  /home/laojing/Projects/SmartHome/Source/VoicePCM/VoicePCM.h
+/home/laojing/Projects/SmartHome/Object/VoicePCM/VoicePCMPlay.o:  \
+ /home/laojing/Projects/SmartHome/Source/VoicePCM/VoicePCMPlay.c \
+  /home/laojing/Projects/SmartHome/Source/VoicePCM/VoicePCM.h

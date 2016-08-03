@@ -1,0 +1,2897 @@
+<Project>
+  <Property>
+    <name>SmartHome</name>
+    <destination>/home/laojing/Projects/SmartHome</destination>
+    <hardware>1</hardware>
+    <author>老井</author>
+    <email>laojing@139.com</email>
+    <version>1.0</version>
+    <date>2014-09-19</date>
+    <company>沈阳工业大学</company>
+    <description>智能家居</description>
+  </Property>
+  <ConfigHards>
+  </ConfigHards>
+  <Object>
+    <ObjectProperty>
+      <id>1411172435</id>
+      <name>Oper</name>
+      <display>运行</display>
+      <description>运行</description>
+      <enable>0</enable>
+    </ObjectProperty>
+    <StateMachines>
+    </StateMachines>
+    <StateFilters>
+    </StateFilters>
+    <AlarmCodes>
+    </AlarmCodes>
+    <InputOutputs>
+    </InputOutputs>
+    <Parameters>
+      <Parameter>
+        <id>1411351953</id>
+        <name>P_CycleTime</name>
+        <datatype>6</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>1</initialvalue>
+        <testvalue>1</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>主循环时间周期</display>
+          <description>主循环时间周期</description>
+        </Hmis>
+      </Parameter>
+    </Parameters>
+    <States>
+      <State>
+        <id>1411264139</id>
+        <name>S_OperState</name>
+        <datatype>3</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>运行状态</display>
+          <description>运行状态</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1416967998</id>
+        <name>S_ActAlaLev</name>
+        <datatype>3</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>激活状态码级别</display>
+          <description>激活状态码级别</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1411264140</id>
+        <name>S_ActAlarm</name>
+        <datatype>4</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>最高激活状态码</display>
+          <description>最高激活状态码</description>
+        </Hmis>
+      </State>
+    </States>
+    <Deriveds>
+    </Deriveds>
+    <Manuals>
+    </Manuals>
+  </Object>
+  <Object>
+    <ObjectProperty>
+      <id>1411368477</id>
+      <name>Suns</name>
+      <display>阳台灯</display>
+      <description>阳台灯</description>
+      <enable>1</enable>
+    </ObjectProperty>
+    <StateMachines>
+      <StateMachine>
+        <id>1411368781</id>
+        <name>idle</name>
+        <category>idle</category>
+        <categorycn>待机</categorycn>
+        <Excecutes>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1411372077</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>1</left>
+            <nlogic>1</nlogic>
+            <operator1>1411372639</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>1</left>
+            <nlogic>0</nlogic>
+            <operator1>1411371338</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+          <Condition>
+            <logic>2</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1411371142</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+          <Exit>
+            <nextstate>1411372884</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1411372639</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>1</left>
+            <nlogic>0</nlogic>
+            <operator1>1411371142</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+          <Condition>
+            <logic>2</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1411371338</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+          <Exit>
+            <nextstate>1411372077</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>1</left>
+            <nlogic>1</nlogic>
+            <operator1>1411372639</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1411368546</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+          <Exit>
+            <nextstate>1411372884</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1411372639</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1411368546</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>待机</display>
+        <description>待机</description>
+      </StateMachine>
+      <StateMachine>
+        <id>1411372077</id>
+        <name>openin</name>
+        <category>open</category>
+        <categorycn>打开</categorycn>
+        <Excecutes>
+          <Excecute>
+            <operator1>1411371630</operator1>
+            <operation>1</operation>
+            <operator2>true</operator2>
+          </Excecute>
+          <Excecute>
+            <operator1>1411368678</operator1>
+            <operation>1</operation>
+            <operator2>true</operator2>
+          </Excecute>
+          <Excecute>
+            <operator1>1411368546</operator1>
+            <operation>1</operation>
+            <operator2>false</operator2>
+          </Excecute>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1411372397</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>true</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>进入打开阳台灯</display>
+        <description>进入打开阳台灯</description>
+      </StateMachine>
+      <StateMachine>
+        <id>1411372397</id>
+        <name>opening</name>
+        <category>open</category>
+        <categorycn>打开</categorycn>
+        <Excecutes>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1411368781</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>1</nlogic>
+            <operator1>1411371630</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>正在打开阳台灯</display>
+        <description>正在打开阳台灯</description>
+      </StateMachine>
+      <StateMachine>
+        <id>1411372884</id>
+        <name>closein</name>
+        <category>close</category>
+        <categorycn>关闭</categorycn>
+        <Excecutes>
+          <Excecute>
+            <operator1>1411371630</operator1>
+            <operation>1</operation>
+            <operator2>true</operator2>
+          </Excecute>
+          <Excecute>
+            <operator1>1411368678</operator1>
+            <operation>1</operation>
+            <operator2>false</operator2>
+          </Excecute>
+          <Excecute>
+            <operator1>1411368546</operator1>
+            <operation>1</operation>
+            <operator2>false</operator2>
+          </Excecute>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1411372923</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>true</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>进入关闭阳台灯</display>
+        <description>进入关闭阳台灯</description>
+      </StateMachine>
+      <StateMachine>
+        <id>1411372923</id>
+        <name>closing</name>
+        <category>close</category>
+        <categorycn>关闭</categorycn>
+        <Excecutes>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1411368781</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>1</nlogic>
+            <operator1>1411371630</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>正在关闭阳台灯</display>
+        <description>正在关闭阳台灯</description>
+      </StateMachine>
+    </StateMachines>
+    <StateFilters>
+    </StateFilters>
+    <AlarmCodes>
+    </AlarmCodes>
+    <InputOutputs>
+      <InputOutput>
+        <id>1411368546</id>
+        <name>CI_SunsLightCmd</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>0</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>0</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>阳台灯命令</display>
+          <description>阳台灯命令</description>
+        </Hmis>
+      </InputOutput>
+      <InputOutput>
+        <id>1411384006</id>
+        <name>CI_SunsHuman</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>0</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>0</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>阳台灯接近微波</display>
+          <description>阳台灯接近微波</description>
+        </Hmis>
+      </InputOutput>
+      <InputOutput>
+        <id>1411381271</id>
+        <name>CI_SunsSwitch</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>0</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>0</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>阳台灯开关</display>
+          <description>阳台灯开关</description>
+        </Hmis>
+      </InputOutput>
+      <InputOutput>
+        <id>1411372639</id>
+        <name>CI_SunsLightState</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>0</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>0</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>阳台灯状态</display>
+          <description>阳台灯状态</description>
+        </Hmis>
+      </InputOutput>
+      <InputOutput>
+        <id>1411368678</id>
+        <name>CO_SunsLight</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>0</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>0</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>阳台灯</display>
+          <description>阳台灯</description>
+        </Hmis>
+      </InputOutput>
+    </InputOutputs>
+    <Parameters>
+    </Parameters>
+    <States>
+      <State>
+        <id>1411371537</id>
+        <name>S_SunsState</name>
+        <datatype>3</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>0</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>阳台灯状态</display>
+          <description>阳台灯状态</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1411371543</id>
+        <name>S_SunsRS</name>
+        <datatype>3</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>0</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>阳台灯请求状态</display>
+          <description>阳台灯请求状态</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1411371590</id>
+        <name>S_SunsSC</name>
+        <datatype>6</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>0</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>阳台灯状态计数</display>
+          <description>阳台灯状态计数</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1411371630</id>
+        <name>S_SunsUpdate</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>0</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>阳台灯需要更新</display>
+          <description>阳台灯需要更新</description>
+        </Hmis>
+      </State>
+    </States>
+    <Deriveds>
+      <Derived>
+        <id>1411371142</id>
+        <name>D_SunsPulseOn</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>阳台灯开关上升沿</display>
+          <description>阳台灯开关上升沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1411381271</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>4</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1411371338</id>
+        <name>D_SunsPulseOff</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>阳台灯开关下降沿</display>
+          <description>阳台灯开关下降沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1411381271</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>5</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+    </Deriveds>
+    <Manuals>
+    </Manuals>
+  </Object>
+  <Object>
+    <ObjectProperty>
+      <id>1463855339</id>
+      <name>Deng</name>
+      <display>灯光</display>
+      <description>灯光</description>
+      <enable>1</enable>
+    </ObjectProperty>
+    <StateMachines>
+      <StateMachine>
+        <id>1463872307</id>
+        <name>idle</name>
+        <category>idle</category>
+        <categorycn>待机</categorycn>
+        <Excecutes>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1463872318</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463856585</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>待机</display>
+        <description>待机</description>
+      </StateMachine>
+      <StateMachine>
+        <id>1463872318</id>
+        <name>bookopenin</name>
+        <category>bookopen</category>
+        <categorycn>书房灯打开</categorycn>
+        <Excecutes>
+          <Excecute>
+            <operator1>1463872229</operator1>
+            <operation>1</operation>
+            <operator2>true</operator2>
+          </Excecute>
+          <Excecute>
+            <operator1>1463872121</operator1>
+            <operation>1</operation>
+            <operator2>true</operator2>
+          </Excecute>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1463872377</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>true</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>书房灯打开进入</display>
+        <description>书房灯打开进入</description>
+      </StateMachine>
+      <StateMachine>
+        <id>1463872377</id>
+        <name>bookopening</name>
+        <category>bookopen</category>
+        <categorycn>书房灯打开</categorycn>
+        <Excecutes>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1463872307</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>1</nlogic>
+            <operator1>1463872229</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>书房灯打开进行</display>
+        <description>书房灯打开进行</description>
+      </StateMachine>
+    </StateMachines>
+    <StateFilters>
+    </StateFilters>
+    <AlarmCodes>
+    </AlarmCodes>
+    <InputOutputs>
+      <InputOutput>
+        <id>1463872098</id>
+        <name>CI_BookLightState</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>0</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>书房灯状态</display>
+          <description>书房灯状态</description>
+        </Hmis>
+      </InputOutput>
+      <InputOutput>
+        <id>1463872121</id>
+        <name>CO_BookLight</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>0</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>书房灯</display>
+          <description>书房灯</description>
+        </Hmis>
+      </InputOutput>
+    </InputOutputs>
+    <Parameters>
+    </Parameters>
+    <States>
+      <State>
+        <id>1463872229</id>
+        <name>S_DengState</name>
+        <datatype>3</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>灯光状态</display>
+          <description>灯光状态</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1463872680</id>
+        <name>S_DengRS</name>
+        <datatype>3</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>灯光请求状态</display>
+          <description>灯光请求状态</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1463872738</id>
+        <name>S_DengSC</name>
+        <datatype>6</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>灯光计数</display>
+          <description>灯光计数</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1463872644</id>
+        <name>S_BookUpdate</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>书房灯需要更新</display>
+          <description>书房灯需要更新</description>
+        </Hmis>
+      </State>
+    </States>
+    <Deriveds>
+    </Deriveds>
+    <Manuals>
+    </Manuals>
+  </Object>
+  <Object>
+    <ObjectProperty>
+      <id>1463855391</id>
+      <name>Huma</name>
+      <display>人体感应</display>
+      <description>人体感应</description>
+      <enable>1</enable>
+    </ObjectProperty>
+    <StateMachines>
+      <StateMachine>
+        <id>1463866771</id>
+        <name>idle</name>
+        <category>idle</category>
+        <categorycn>待机</categorycn>
+        <Excecutes>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1463866908</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>1</left>
+            <nlogic>0</nlogic>
+            <operator1>1463868268</operator1>
+            <operation>6</operation>
+            <operator2>1463866486</operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>1</left>
+            <nlogic>0</nlogic>
+            <operator1>1463868268</operator1>
+            <operation>7</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463866486</operator1>
+            <operation>11</operation>
+            <operator2>1463870267</operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>1</left>
+            <nlogic>1</nlogic>
+            <operator1>1463869864</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+          <Exit>
+            <nextstate>1463870803</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>1</left>
+            <nlogic>0</nlogic>
+            <operator1>1463868268</operator1>
+            <operation>6</operation>
+            <operator2>1463866532</operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>1</left>
+            <nlogic>0</nlogic>
+            <operator1>1463868268</operator1>
+            <operation>7</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463866532</operator1>
+            <operation>11</operation>
+            <operator2>1463870267</operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463869864</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+          <Exit>
+            <nextstate>1463906542</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1447013866</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>1</left>
+            <nlogic>1</nlogic>
+            <operator1>1463869864</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+          <Exit>
+            <nextstate>1463906612</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463906385</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463869864</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>待机</display>
+        <description>待机</description>
+      </StateMachine>
+      <StateMachine>
+        <id>1463866908</id>
+        <name>timeopen</name>
+        <category>open</category>
+        <categorycn>打开</categorycn>
+        <Excecutes>
+          <Excecute>
+            <operator1>1463867317</operator1>
+            <operation>1</operation>
+            <operator2>true</operator2>
+          </Excecute>
+          <Excecute>
+            <operator1>1463867655</operator1>
+            <operation>1</operation>
+            <operator2>true</operator2>
+          </Excecute>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1463867154</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>true</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>时间到上电</display>
+        <description>时间到上电</description>
+      </StateMachine>
+      <StateMachine>
+        <id>1463906542</id>
+        <name>cmdopen</name>
+        <category>open</category>
+        <categorycn>打开</categorycn>
+        <Excecutes>
+          <Excecute>
+            <operator1>1463867317</operator1>
+            <operation>1</operation>
+            <operator2>true</operator2>
+          </Excecute>
+          <Excecute>
+            <operator1>1463867655</operator1>
+            <operation>1</operation>
+            <operator2>true</operator2>
+          </Excecute>
+          <Excecute>
+            <operator1>1447013866</operator1>
+            <operation>1</operation>
+            <operator2>false</operator2>
+          </Excecute>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1463867154</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>true</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>外部命令上电</display>
+        <description>外部命令上电</description>
+      </StateMachine>
+      <StateMachine>
+        <id>1463867154</id>
+        <name>open</name>
+        <category>open</category>
+        <categorycn>打开</categorycn>
+        <Excecutes>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1463866771</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>1</nlogic>
+            <operator1>1463867317</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>正在上电</display>
+        <description>正在上电</description>
+      </StateMachine>
+      <StateMachine>
+        <id>1463870803</id>
+        <name>timeclose</name>
+        <category>close</category>
+        <categorycn>关闭</categorycn>
+        <Excecutes>
+          <Excecute>
+            <operator1>1463867317</operator1>
+            <operation>1</operation>
+            <operator2>true</operator2>
+          </Excecute>
+          <Excecute>
+            <operator1>1463867655</operator1>
+            <operation>1</operation>
+            <operator2>false</operator2>
+          </Excecute>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1463870758</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>true</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>时间到断电</display>
+        <description>时间到断电</description>
+      </StateMachine>
+      <StateMachine>
+        <id>1463906612</id>
+        <name>cmdclose</name>
+        <category>close</category>
+        <categorycn>关闭</categorycn>
+        <Excecutes>
+          <Excecute>
+            <operator1>1463867317</operator1>
+            <operation>1</operation>
+            <operator2>true</operator2>
+          </Excecute>
+          <Excecute>
+            <operator1>1463867655</operator1>
+            <operation>1</operation>
+            <operator2>false</operator2>
+          </Excecute>
+          <Excecute>
+            <operator1>1463906385</operator1>
+            <operation>1</operation>
+            <operator2>false</operator2>
+          </Excecute>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1463870758</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>true</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>外部命令断电</display>
+        <description>外部命令断电</description>
+      </StateMachine>
+      <StateMachine>
+        <id>1463870758</id>
+        <name>close</name>
+        <category>close</category>
+        <categorycn>关闭</categorycn>
+        <Excecutes>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1463866771</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>1</nlogic>
+            <operator1>1463867317</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>正在断电</display>
+        <description>正在断电</description>
+      </StateMachine>
+    </StateMachines>
+    <StateFilters>
+    </StateFilters>
+    <AlarmCodes>
+    </AlarmCodes>
+    <InputOutputs>
+      <InputOutput>
+        <id>1463855689</id>
+        <name>CI_HumanDoor</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>1</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min>false</min>
+          <max>true</max>
+          <enable>1</enable>
+          <resettype>1</resettype>
+          <level>1</level>
+          <runlevel>1</runlevel>
+          <category>1</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig>L</logconfig>
+          <viewlevel>1</viewlevel>
+          <changelevel>1</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>入门感应</display>
+          <description>入门感应</description>
+        </Hmis>
+      </InputOutput>
+      <InputOutput>
+        <id>1463855729</id>
+        <name>CI_HumanLive</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>1</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min>false</min>
+          <max>true</max>
+          <enable>1</enable>
+          <resettype>1</resettype>
+          <level>1</level>
+          <runlevel>1</runlevel>
+          <category>1</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig>L</logconfig>
+          <viewlevel>1</viewlevel>
+          <changelevel>1</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>客厅感应</display>
+          <description>客厅感应</description>
+        </Hmis>
+      </InputOutput>
+      <InputOutput>
+        <id>1463855772</id>
+        <name>CI_HumanPass</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>1</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min>false</min>
+          <max>true</max>
+          <enable>1</enable>
+          <resettype>1</resettype>
+          <level>1</level>
+          <runlevel>1</runlevel>
+          <category>1</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig>L</logconfig>
+          <viewlevel>1</viewlevel>
+          <changelevel>1</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>走廊感应</display>
+          <description>走廊感应</description>
+        </Hmis>
+      </InputOutput>
+      <InputOutput>
+        <id>1463855799</id>
+        <name>CI_HumanBook</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>1</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min>false</min>
+          <max>true</max>
+          <enable>1</enable>
+          <resettype>1</resettype>
+          <level>1</level>
+          <runlevel>1</runlevel>
+          <category>1</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig>L</logconfig>
+          <viewlevel>1</viewlevel>
+          <changelevel>1</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>书房感应</display>
+          <description>书房感应</description>
+        </Hmis>
+      </InputOutput>
+      <InputOutput>
+        <id>1463855844</id>
+        <name>CI_HumanMain</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>1</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min>false</min>
+          <max>true</max>
+          <enable>1</enable>
+          <resettype>1</resettype>
+          <level>1</level>
+          <runlevel>1</runlevel>
+          <category>1</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig>L</logconfig>
+          <viewlevel>1</viewlevel>
+          <changelevel>1</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>主卧感应</display>
+          <description>主卧感应</description>
+        </Hmis>
+      </InputOutput>
+      <InputOutput>
+        <id>1463855864</id>
+        <name>CI_HumanSecd</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>1</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min>false</min>
+          <max>true</max>
+          <enable>1</enable>
+          <resettype>1</resettype>
+          <level>1</level>
+          <runlevel>1</runlevel>
+          <category>1</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig>L</logconfig>
+          <viewlevel>1</viewlevel>
+          <changelevel>1</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>次卧感应</display>
+          <description>次卧感应</description>
+        </Hmis>
+      </InputOutput>
+      <InputOutput>
+        <id>1463869864</id>
+        <name>CI_HumanPowerState</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>1</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min>false</min>
+          <max>true</max>
+          <enable>1</enable>
+          <resettype>1</resettype>
+          <level>1</level>
+          <runlevel>1</runlevel>
+          <category>1</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig>L</logconfig>
+          <viewlevel>1</viewlevel>
+          <changelevel>1</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>人体感应电源状态</display>
+          <description>人体感应电源状态</description>
+        </Hmis>
+      </InputOutput>
+      <InputOutput>
+        <id>1463867655</id>
+        <name>CO_HumanPower</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Hards>
+        </Hards>
+        <IOdatatype>1</IOdatatype>
+        <Hards>
+        </Hards>
+        <Alarms>
+          <min>false</min>
+          <max>true</max>
+          <enable>1</enable>
+          <resettype>1</resettype>
+          <level>1</level>
+          <runlevel>1</runlevel>
+          <category>1</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig>L</logconfig>
+          <viewlevel>1</viewlevel>
+          <changelevel>1</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>人体感应电源</display>
+          <description>人体感应电源</description>
+        </Hmis>
+      </InputOutput>
+    </InputOutputs>
+    <Parameters>
+      <Parameter>
+        <id>1447013866</id>
+        <name>P_ActiveHuman</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>激活人体感应</display>
+          <description>激活人体感应</description>
+        </Hmis>
+      </Parameter>
+      <Parameter>
+        <id>1463906385</id>
+        <name>P_DeactiveHuman</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>关闭人体感应</display>
+          <description>关闭人体感应</description>
+        </Hmis>
+      </Parameter>
+      <Parameter>
+        <id>1463866486</id>
+        <name>P_PowerOnTime</name>
+        <datatype>5</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>64800</initialvalue>
+        <testvalue>64800</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>人体感应上电时间</display>
+          <description>人体感应上电时间</description>
+        </Hmis>
+      </Parameter>
+      <Parameter>
+        <id>1463866532</id>
+        <name>P_PowerOffTime</name>
+        <datatype>5</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>79200</initialvalue>
+        <testvalue>79200</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>人体感应断电时间</display>
+          <description>人体感应断电时间</description>
+        </Hmis>
+      </Parameter>
+      <Parameter>
+        <id>1463870267</id>
+        <name>P_PowerTimeSpan</name>
+        <datatype>5</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>300</initialvalue>
+        <testvalue>300</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>人体感应时间间隔</display>
+          <description>人体感应时间间隔</description>
+        </Hmis>
+      </Parameter>
+    </Parameters>
+    <States>
+      <State>
+        <id>1463865338</id>
+        <name>S_HumaState</name>
+        <datatype>3</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>人体感应状态</display>
+          <description>人体感应状态</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1463868317</id>
+        <name>S_HumaRS</name>
+        <datatype>3</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>人体感应请求状态</display>
+          <description>人体感应请求状态</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1463868376</id>
+        <name>S_HumaSC</name>
+        <datatype>6</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>人体感应计数</display>
+          <description>人体感应计数</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1463868268</id>
+        <name>S_DayTime</name>
+        <datatype>5</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>时间</display>
+          <description>时间</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1463865990</id>
+        <name>S_HumanPower</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>人体感应电源</display>
+          <description>人体感应电源</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1463867317</id>
+        <name>S_HumanUpdate</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>人体感应电源需要更新</display>
+          <description>人体感应电源需要更新</description>
+        </Hmis>
+      </State>
+    </States>
+    <Deriveds>
+      <Derived>
+        <id>1463856254</id>
+        <name>D_HumanDoorOn</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>入门感应开关上升沿</display>
+          <description>入门感应开关上升沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855689</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>4</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1463856653</id>
+        <name>D_HumanDoorOff</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>入门感应开关下降沿</display>
+          <description>入门感应开关下降沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855689</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>5</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1463856479</id>
+        <name>D_HumanLiveOn</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>客厅感应开关上升沿</display>
+          <description>客厅感应开关上升沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855729</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>4</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1463856764</id>
+        <name>D_HumanLiveOff</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>客厅感应开关下降沿</display>
+          <description>客厅感应开关下降沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855729</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>5</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1463856507</id>
+        <name>D_HumanPassOn</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>走廊感应开关上升沿</display>
+          <description>走廊感应开关上升沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855772</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>4</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1463856849</id>
+        <name>D_HumanPassOff</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>走廊感应开关下降沿</display>
+          <description>走廊感应开关下降沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855772</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>5</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1463856585</id>
+        <name>D_HumanBookOn</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>书房感应开关上升沿</display>
+          <description>书房感应开关上升沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855799</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>4</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1463856864</id>
+        <name>D_HumanBookOff</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>书房感应开关下降沿</display>
+          <description>书房感应开关下降沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855799</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>5</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1463856605</id>
+        <name>D_HumanMainOn</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>主卧感应开关上升沿</display>
+          <description>主卧感应开关上升沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855844</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>4</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1463856891</id>
+        <name>D_HumanMainOff</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>主卧感应开关下降沿</display>
+          <description>主卧感应开关下降沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855844</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>5</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1463856626</id>
+        <name>D_HumanSecdOn</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>次卧感应开关上升沿</display>
+          <description>次卧感应开关上升沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855864</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>4</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1463856898</id>
+        <name>D_HumanSecdOff</name>
+        <datatype>1</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>false</initialvalue>
+        <testvalue>false</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>次卧感应开关下降沿</display>
+          <description>次卧感应开关下降沿</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855864</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+        <filter>5</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1465598679</id>
+        <name>D_HumanOffTime</name>
+        <datatype>5</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>感应开关全关持续时间</display>
+          <description>感应开关全关持续时间</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>1</left>
+            <nlogic>1</nlogic>
+            <operator1>1463855864</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>1</left>
+            <nlogic>1</nlogic>
+            <operator1>1463855689</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>1</left>
+            <nlogic>1</nlogic>
+            <operator1>1463855729</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>1</left>
+            <nlogic>1</nlogic>
+            <operator1>1463855772</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>1</left>
+            <nlogic>1</nlogic>
+            <operator1>1463855799</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>1</logic>
+            <left>1</left>
+            <nlogic>1</nlogic>
+            <operator1>1463855844</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+        </Conditions>
+        <filter>7</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+      <Derived>
+        <id>1467072545</id>
+        <name>D_HumanOnTime</name>
+        <datatype>5</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>0</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>感应开关感应持续时间</display>
+          <description>感应开关感应持续时间</description>
+        </Hmis>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>1</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855864</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>2</logic>
+            <left>1</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855689</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>2</logic>
+            <left>1</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855729</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>2</logic>
+            <left>1</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855772</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>2</logic>
+            <left>1</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855799</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+          <Condition>
+            <logic>2</logic>
+            <left>1</left>
+            <nlogic>0</nlogic>
+            <operator1>1463855844</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>1</right>
+          </Condition>
+        </Conditions>
+        <filter>7</filter>
+        <time> </time>
+        <Conditions>
+        </Conditions>
+        <Conditions>
+        </Conditions>
+      </Derived>
+    </Deriveds>
+    <Manuals>
+    </Manuals>
+  </Object>
+  <Object>
+    <ObjectProperty>
+      <id>1467072983</id>
+      <name>Resp</name>
+      <display>感应响应</display>
+      <description>感应响应</description>
+      <enable>1</enable>
+    </ObjectProperty>
+    <StateMachines>
+      <StateMachine>
+        <id>1467073291</id>
+        <name>idle</name>
+        <category>idle</category>
+        <categorycn>待机</categorycn>
+        <Excecutes>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1467073360</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>1463856254</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>待机</display>
+        <description>待机</description>
+      </StateMachine>
+      <StateMachine>
+        <id>1467073360</id>
+        <name>humanon</name>
+        <category>chang</category>
+        <categorycn>改变</categorycn>
+        <Excecutes>
+          <Excecute>
+            <operator1>204</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+          </Excecute>
+        </Excecutes>
+        <Exits>
+          <Exit>
+            <nextstate>1467073291</nextstate>
+        <Conditions>
+          <Condition>
+            <logic>0</logic>
+            <left>0</left>
+            <nlogic>0</nlogic>
+            <operator1>true</operator1>
+            <operation>0</operation>
+            <operator2> </operator2>
+            <right>0</right>
+          </Condition>
+        </Conditions>
+          </Exit>
+        </Exits>
+        <timeout> </timeout>
+        <timeoutalarm>0</timeoutalarm>
+        <display>入门感应启动</display>
+        <description>入门感应启动</description>
+      </StateMachine>
+    </StateMachines>
+    <StateFilters>
+    </StateFilters>
+    <AlarmCodes>
+    </AlarmCodes>
+    <InputOutputs>
+    </InputOutputs>
+    <Parameters>
+    </Parameters>
+    <States>
+      <State>
+        <id>1467073953</id>
+        <name>S_RespState</name>
+        <datatype>3</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>1</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>感应响应状态</display>
+          <description>感应响应状态</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1467073990</id>
+        <name>S_RespRS</name>
+        <datatype>3</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>1</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>感应响应请求状态</display>
+          <description>感应响应请求状态</description>
+        </Hmis>
+      </State>
+      <State>
+        <id>1467074020</id>
+        <name>S_RespSC</name>
+        <datatype>6</datatype>
+        <resetcondition>1</resetcondition>
+        <initialvalue>0</initialvalue>
+        <testvalue>0</testvalue>
+        <Alarms>
+          <min> </min>
+          <max> </max>
+          <enable>1</enable>
+          <resettype>1</resettype>
+          <level>0</level>
+          <runlevel>0</runlevel>
+          <category>0</category>
+          <statefilter> </statefilter>
+        </Alarms>
+        <Hmis>
+          <logconfig> </logconfig>
+          <viewlevel>0</viewlevel>
+          <changelevel>0</changelevel>
+          <displaylocation> </displaylocation>
+          <displayunits>0</displayunits>
+          <display>感应响应计数</display>
+          <description>感应响应计数</description>
+        </Hmis>
+      </State>
+    </States>
+    <Deriveds>
+    </Deriveds>
+    <Manuals>
+    </Manuals>
+  </Object>
+</Project>

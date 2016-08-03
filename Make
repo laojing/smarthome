@@ -1,0 +1,49 @@
+Source                 = $(wildcard *.c)
+
+Empty                  =
+Space                  = $(Empty) $(Empty)
+temproot               = $(subst /Source,$(Space),$(CURDIR))
+DEV_ROOT               = $(word 1,$(temproot))
+
+include $(DEV_ROOT)/Makefile
+
+Package        		   = $(subst $(DEV_ROOT)/Source/,,$(CURDIR))
+PackageSourceDir 	   = $(DEV_ROOT)/Source/$(Package)
+PackageTargetDir       = $(DEV_ROOT)/Object/$(Package)
+PackageTargetDirs      = $(subst /,\/,$(PackageTargetDir))
+
+ifdef FORWINDOW
+Makedir                = @echo
+COptions			   = $(COPTION)
+else
+Makedir                = @mkdir -p
+endif
+
+CSourceFiles    	   = $(Source:%.c= $(PackageSourceDir)/%.c)
+CObjectFiles           = $(Source:%.c= $(PackageTargetDir)/%.o)
+
+$(PackageTargetDir):
+	$(Makedir) $@
+
+CCompiler              = ../../arm-tool/bin/arm-linux-gcc -std=gnu99 -g
+
+$(PackageTargetDir)/%.o : $(PackageSourceDir)/%.c
+	@echo $@
+	@$(CCompiler) -c $< -o $@ $(COptions)
+
+package_build: $(PackageTargetDir) $(CObjectFiles)
+
+package_clean : 
+	@rm -fr $(PackageTargetDir)/*
+
+package_depend : 
+	@../../arm-tool/bin/arm-linux-gcc -E -MM $(CSourceFiles) > tmp1
+	@cat tmp1 | sed 's/^/$(PackageTargetDirs)\//' > tmp2
+	cat tmp2 | sed 's/$(PackageTargetDirs)\/ / /' > tmp1
+	cat tmp1 | sed 's/.o: \//.o: \\\n \//' > Makedepend
+	rm tmp1 tmp2
+
+ifdef FORWINDOW
+include Makedepend
+endif
+
