@@ -1,4 +1,5 @@
 Packages 		= \
+	  			 WaveLib \
 	  			 Communication \
 	  			 VoicePCM \
 	  			 VoiceCMD \
@@ -20,7 +21,7 @@ PackageListLoop        = $(patsubst %,Source/%/.loop,$(Packages))
 makelinux:
 	@echo "Start Make Linux"
 
-LinkerOption    = -std=gnu99 -pthread -lm -lmad -ldl -lrt -lssl -lcrypto -lfftw3
+LinkerOption    = -std=gnu99 -pthread -lm -lmad -ldl -lrt -lfftw3
 
 %.loop:
 	@$(MAKE) $(MakeOptions) -C $(subst .loop,,$@) -f Make package_$(MAKECMDGOALS)

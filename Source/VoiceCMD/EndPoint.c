@@ -6,7 +6,7 @@
 
 #include "VoiceCMD.h"
 
-int EndPoint( float *signal, int len, float noise_sum_max, float noise_zero_max,  int *valid_start, int *valid_end ) {
+int EndPoint( double *signal, int len, double noise_sum_max, double noise_zero_max,  int *valid_start, int *valid_end ) {
 
 	int valid_con = 0;
 	int frame_con = 0;
@@ -21,14 +21,14 @@ int EndPoint( float *signal, int len, float noise_sum_max, float noise_zero_max,
 	int back_duration = 0;                          // 后端过渡段低于门限值持续帧数
 	int v_durmin_t = 80;							// 有效语音最短时间门限 ms
 	int v_durmin_f = v_durmin_t / 10; 		       	// 有效语音最短帧数
-	int s_durmax_t = 110;                          	// 无声段最长时间门限 ms
+	int s_durmax_t = 210;                          	// 无声段最长时间门限 ms
 	int s_durmax_f = s_durmax_t / 10; 		       	// 无声段最长帧数
 
 	for( int i=0; i<len-FRAME_LEN; i+=FRAME_MOV ) {
 
 		frame_con++;
 
-		float S = 0;
+		double S = 0;
 		for( int j=i; j<i+FRAME_LEN; j++ ) {
 			S += fabs( signal[j] );
 		}
@@ -77,9 +77,9 @@ int EndPoint( float *signal, int len, float noise_sum_max, float noise_zero_max,
 					if( valid_con < VALID_MAX ) {
 						valid_end[valid_con] = (frame_con - s_durmax_f)*FRAME_MOV;
 						int frame_num = (valid_end[valid_con] - valid_start[valid_con])/FRAME_MOV;
-						if( frame_num > 45 && frame_num < 100 ) {
+//						if( frame_num > 45 && frame_num < 100 ) {
 							valid_con++;            // 语音段计数
-						}
+//						}
 					}
 					back_duration=0;
 				}

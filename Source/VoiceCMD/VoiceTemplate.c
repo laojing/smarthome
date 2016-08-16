@@ -9,8 +9,9 @@
 #include "Template.h"
 #include "VoiceCMD.h"
 #include "../VoicePCM/VoicePCM.h"
+#include "../WaveLib/WaveLib.h"
 
-float signal[CODESECOND*SECONDSIZE/2];
+double signal[CODESECOND*SECONDSIZE/2];
 
 char line[100];
 
@@ -133,6 +134,14 @@ VoiceTemplateDelete( char *voice ) {
 	system( path );
 }
 
+void SaveVoice( double *signal, int len, char *name ) {
+	FILE *fd = fopen( name, "w" );
+	for( int i=0; i<len; i++ ) {
+		fprintf( fd, "%f\n", signal[i] );
+	}
+	fclose( fd );
+}
+
 void 
 VoiceTemplateRecord( int fdsp, char *voice ) {
 
@@ -141,36 +150,41 @@ VoiceTemplateRecord( int fdsp, char *voice ) {
 		signal[i/2] = (buf[i+1]*0xff + buf[i]) / 32768.0;
 	}
 
+	SaveVoice( signal, CODESECOND*SECONDSIZE/2, "/root/home/changjiang_raw.mat" );
+ 	Wavelet( signal, CODESECOND*SECONDSIZE/2, 3 );
+	SaveVoice( signal, CODESECOND*SECONDSIZE/2, "/root/home/changjiang_wave.mat" );
+
 //	FILE *fd = fopen( "/root/home/changjiang05.mat", "rb" );
 //	for( int i=0; i<CODESECOND*SECONDSIZE/2; i++ ) {
 //		signal[i] = atoi( ReadLine(fd) ) / 32768.0;
 //	}
 //	fclose( fd );
 
-	float *pSignal = signal + FRAME_MOV*100;
+	double *pSignal = signal + FRAME_MOV*100;
 	int len = CODESECOND*SECONDSIZE/2 - 100*FRAME_MOV;
 
-	float noise_zero = NoiseZero( pSignal, len );
+	double noise_zero = NoiseZero( pSignal, len );
 	for( int i=0; i<len; i++ ) {
 		pSignal[i] -= noise_zero;
 	}
 
-	float noise_sum_max = 0;
-	float noise_zero_max = 0;
+	double noise_sum_max = 0;
+	double noise_zero_max = 0;
 	NoiseLimit( pSignal, len, &noise_sum_max, &noise_zero_max );
 
 	int valid_start[VALID_MAX];
 	int valid_end[VALID_MAX];
 
 	int valid_con = EndPoint( pSignal, len, noise_sum_max, noise_zero_max, valid_start, valid_end );
+	printf( "valid_con:%d\n", valid_con );
 
 	for( int i=0; i<valid_con; i++ ) {
-		float *tmp = pSignal + valid_start[i];
+		double *tmp = pSignal + valid_start[i];
 		int frame_num;
 		double *mfcc = MFCC( tmp, valid_end[i]-valid_start[i], &frame_num );
+		printf( "frame_num:%d\n", frame_num );
 		if( frame_num > 40 && frame_num < 100 )
 			SaveTemplate( mfcc, frame_num, voice );
 		free( mfcc );
 	}
-
 }

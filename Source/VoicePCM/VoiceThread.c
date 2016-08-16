@@ -26,9 +26,10 @@ void *VoicePCMThread( void *ptrEndSignal ) {
 	}
 	VoiceMp3FileLoad();
 //	VoiceCodeStandInit();
+
 	VoiceTemplateInit();
 
-//	VoiceTemplateRecord( fdsp, "changjiang" );
+//	VoiceTemplateRecord( fdsp, "tuixia" );
 
 	int VoiceMode = 0;
 
@@ -37,7 +38,7 @@ void *VoicePCMThread( void *ptrEndSignal ) {
 
 		// 语音控制模式
 		if( VoiceMode > 0 ) {
-			if( VoiceMode++ > 20 ) {
+			if( VoiceMode++ > 10 ) {
 				VoiceMode = 0;
 				VoicePCMPlay( fdsp, QUITDIR );
 			} else {

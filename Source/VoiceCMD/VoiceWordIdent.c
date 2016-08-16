@@ -8,14 +8,15 @@
 #include "Template.h"
 #include "VoiceCMD.h"
 #include "../VoicePCM/VoicePCM.h"
+#include "../WaveLib/WaveLib.h"
 
-extern float signal[CODESECOND*SECONDSIZE/2];
+extern double signal[CODESECOND*SECONDSIZE/2];
 extern struct voicetemplate *templates;
 extern int templatenum;
 
 double GetDistance( double *R, double *T ) {
 	double dis = 0;
-	for( int i=0; i<12; i++ ) {
+	for( int i=0; i<NDCTS; i++ ) {
 		dis += (R[i] - T[i]) * (R[i] - T[i]);
 	}
 //	return sqrt(dis);
@@ -29,21 +30,21 @@ double DTW( double *R, int M, double *T, int N ) {
 	int y = 0;
 
 	do {
-		disup = (y + 1 < N) ? GetDistance( R, T+12 ) : 1000000.0;
-		disright = (x + 1 < M) ? GetDistance( R+12, T ) : 1000000.0;
-		disupright = (y + 1 < N && x + 1 < M) ? GetDistance( R+12, T+12 ) : 1000000.0;
+		disup = (y + 1 < N) ? GetDistance( R, T+NDCTS ) : 1000000.0;
+		disright = (x + 1 < M) ? GetDistance( R+NDCTS, T ) : 1000000.0;
+		disupright = (y + 1 < N && x + 1 < M) ? GetDistance( R+NDCTS, T+NDCTS ) : 1000000.0;
 
 		if( disup < disright && disup < disupright ) {
 			dis += disup;
-			T += 12;
+			T += NDCTS;
 			y++;
 		} else if( disright < disupright ) {
 			dis += disright;
-			R += 12;
+			R += NDCTS;
 			x++;
 		} else {
 			dis += disupright;
-			R += 12; T += 12; 
+			R += NDCTS; T += NDCTS; 
 			x++; y++;
 		}
 
@@ -62,6 +63,7 @@ char *DynamicWarping( double *mfcc, int frame_num, char *mode[], int modelen ) {
 		for( int j=0; j<modelen; j++ ) {
 			if( strcmp( templates[i].name, mode[j] ) == 0 ) {
 				ismode = 1;
+				printf( "====:%s\n", mode[j] );
 				break;
 			}
 		}
@@ -86,22 +88,24 @@ char *lightsname[] = {"suoyou", "ciwei", "zhuwei", "shufang", "yimao", "zhuwo", 
 
 int VoiceWordIdent( int fdsp, int mode, int *voicemode ) {
 
-
 	signed char *buf = VoicePCMRecord( fdsp, CODESECOND );
 	for( int i=0; i<CODESECOND*SECONDSIZE; i+=2 ) {
 		signal[i/2] = (buf[i+1]*0xff + buf[i]) / 32768.0;
 	}
 
-	float *pSignal = signal + FRAME_MOV*100;
+ 	Wavelet( signal, CODESECOND*SECONDSIZE/2, 3 );
+	SaveVoice( signal, CODESECOND*SECONDSIZE/2, "/root/home/current_wave.mat" );
+
+	double *pSignal = signal + FRAME_MOV*100;
 	int len = CODESECOND*SECONDSIZE/2 - 100*FRAME_MOV;
 
-	float noise_zero = NoiseZero( pSignal, len );
+	double noise_zero = NoiseZero( pSignal, len );
 	for( int i=0; i<len; i++ ) {
 		pSignal[i] -= noise_zero;
 	}
 
-	float noise_sum_max = 0;
-	float noise_zero_max = 0;
+	double noise_sum_max = 0;
+	double noise_zero_max = 0;
 	NoiseLimit( pSignal, len, &noise_sum_max, &noise_zero_max );
 
 	int valid_start[VALID_MAX];
@@ -114,7 +118,7 @@ int VoiceWordIdent( int fdsp, int mode, int *voicemode ) {
 	if( mode == 0 ) {
 		for( int i=0; i<valid_con; i++ ) {
 			int frame_num = 0;
-			float *tmp = pSignal + valid_start[i];
+			double *tmp = pSignal + valid_start[i];
 			double *mfcc = MFCC( tmp, valid_end[i]-valid_start[i], &frame_num );
 			char *word = DynamicWarping( mfcc, frame_num, codes, sizeof(codes)/sizeof(char*) );
 			if( strcmp(word, codes[0]) == 0 ) {
@@ -125,7 +129,7 @@ int VoiceWordIdent( int fdsp, int mode, int *voicemode ) {
 	} else if( mode == 1 && valid_con > 0 && valid_con < 3 ) {
 		printf( "-------%d\n", valid_con );
 		int frame_num = 0;
-		float *tmp = pSignal + valid_start[0];
+		double *tmp = pSignal + valid_start[0];
 		double *mfcc = MFCC( tmp, valid_end[0]-valid_start[0], &frame_num );
 		char *word = DynamicWarping( mfcc, frame_num, commands, sizeof(commands)/sizeof(char*) );
 		free( mfcc );

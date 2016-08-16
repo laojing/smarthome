@@ -6,15 +6,15 @@
 
 #include "VoiceCMD.h"
 
-float NoiseZero( float *signal, int len ) {
+double NoiseZero( double *signal, int len ) {
 
-	float noise_sum = 0;
+	double noise_sum = 0;
 	int noise_sum_num = 0;
 
 	int noise_number = 0;
 
 	for( int i=0; i<len-FRAME_LEN; i+=FRAME_MOV ) {
-		float tmp = 0;
+		double tmp = 0;
 		for( int j=i; j<i+FRAME_LEN; j++ ) {
 			tmp += fabs( signal[j] );
 		}
@@ -47,12 +47,12 @@ float NoiseZero( float *signal, int len ) {
 	return noise_sum;
 }
 
-void NoiseLimit( float *signal, int len, float *noise_sum_max, float *noise_zero_max ) {
+void NoiseLimit( double *signal, int len, double *noise_sum_max, double *noise_zero_max ) {
 
 	int noise_number = 0;
 
 	for( int i=0; i<len-FRAME_LEN; i+=FRAME_MOV ) {
-		float tmp = 0;
+		double tmp = 0;
 		for( int j=i; j<i+FRAME_LEN; j++ ) {
 			tmp += fabs( signal[j] );
 		}
@@ -72,7 +72,7 @@ void NoiseLimit( float *signal, int len, float *noise_sum_max, float *noise_zero
 		
 		if( noiseisend == 1 ) {
 			for( int n = i-noise_number*FRAME_MOV; n < i; n += FRAME_MOV ) {
-				float tmp = 0;
+				double tmp = 0;
 				for( int j=n; j<n+FRAME_LEN; j++ ) {
 					tmp += fabs( signal[j] );
 				}
