@@ -1,4 +1,5 @@
 Packages 		= \
+	  			 Gnuplot \
 	  			 WaveLib \
 	  			 Communication \
 	  			 VoicePCM \
@@ -26,9 +27,17 @@ LinkerOption    = -std=gnu99 -pthread -lm -lmad -ldl -lrt -lfftw3
 %.loop:
 	@$(MAKE) $(MakeOptions) -C $(subst .loop,,$@) -f Make package_$(MAKECMDGOALS)
 
+ARMGCC = arm-tool/bin/arm-linux-gcc
+Compiler  = $(ARMGCC)
+ifneq ($(ARMGCC), $(wildcard $(ARMGCC)))
+	Compiler  = gcc
+endif
+
+
 build: makelinux $(PackageListLoop)
 	@echo "End Make Linux"
-	@arm-tool/bin/arm-linux-gcc -g -o /home/laojing/arm11/$(Main) $(DEV_ROOT)/Source/main.c $(ObjectFiles) $(LinkerOption)
+	@$(Compiler) -g -o /home/laojing/arm11/$(Main) $(DEV_ROOT)/Source/main.c $(ObjectFiles) $(LinkerOption)
+	/home/laojing/arm11/$(Main)
 
 clean: $(PackageListLoop)
 	@echo Donw Clean!

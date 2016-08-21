@@ -4,8 +4,12 @@
 #include <math.h>
 #include "WaveLib.h"
 
+#include "../Gnuplot/Gnuplot.h"
+
 int comp( const void *a, const void *b ) {
-	return fabs(*(double*)a) - fabs(*(double*)b);
+	if( (*(double*)a - *(double*)b) > 0.00001 ) return 1;
+	else if( (*(double*)a - *(double*)b) < -0.00001 ) return -1;
+	else return 0;
 }
 
 void Wavelet( double *inp, int N, int J ) {
@@ -32,20 +36,27 @@ void Wavelet( double *inp, int N, int J ) {
 	int start = wt->length[0];
 	for( int i=1; i<=wt->J; i++ ) {
 		int len = wt->length[i];
+		for( int j=0; j<len; j++ ) {
+			*(dtmp+start+j) = fabs(*(dtmp+start+j));
+		}
 		qsort( dtmp + start, len, sizeof(double), comp );
+
 
 		double fuck = 0;
 		int len2 = len/2;
 		if( len2*2 == len ) {
-			fuck = fabs((dtmp+start)[len2])/0.6745;
+			fuck = (dtmp+start)[len2]/0.6745;
 		} else {
-			fuck = (fabs((dtmp+start)[len2]) + fabs((dtmp+start)[len2+1]))/2/0.6745;
+			fuck = ((dtmp+start)[len2] + (dtmp+start)[len2+1])/2/0.6745;
 		}
 		double fuck2 = thr*fuck;
+//		printf( "start:%d, len:%d, thr:%f, fuck:%f, %f\n", start, len, thr, fuck, fuck2 );
 		for( int j=0; j<len; j++ ) {
-			if( wt->output[start+j] <= fuck2 ) 
+			if( wt->output[start+j] <= fuck2 
+			&& wt->output[start+j] >= -fuck2 ) 
 				wt->output[start+j] = 0.0;
 		}
+
 		start += len;
 	}
 	free( dtmp );

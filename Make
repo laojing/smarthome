@@ -25,7 +25,14 @@ CObjectFiles           = $(Source:%.c= $(PackageTargetDir)/%.o)
 $(PackageTargetDir):
 	$(Makedir) $@
 
-CCompiler              = ../../arm-tool/bin/arm-linux-gcc -std=gnu99 -g
+ARMGCC = ../../arm-tool/bin/arm-linux-gcc -std=gnu99 -g
+CCompiler  = $(ARMGCC)
+ifneq ($(ARMGCC), $(wildcard $(ARMGCC)))
+	CCompiler  = gcc -std=gnu99 -g
+endif
+
+
+
 
 $(PackageTargetDir)/%.o : $(PackageSourceDir)/%.c
 	@echo $@
