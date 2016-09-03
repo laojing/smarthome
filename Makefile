@@ -29,15 +29,16 @@ LinkerOption    = -std=gnu99 -pthread -lm -lmad -ldl -lrt -lfftw3
 
 ARMGCC = arm-tool/bin/arm-linux-gcc
 Compiler  = $(ARMGCC)
+Execute = @echo no run
 ifneq ($(ARMGCC), $(wildcard $(ARMGCC)))
 	Compiler  = gcc
+	Execute = /home/laojing/arm11/$(Main)
 endif
-
 
 build: makelinux $(PackageListLoop)
 	@echo "End Make Linux"
 	@$(Compiler) -g -o /home/laojing/arm11/$(Main) $(DEV_ROOT)/Source/main.c $(ObjectFiles) $(LinkerOption)
-	/home/laojing/arm11/$(Main)
+	@$(Execute)
 
 clean: $(PackageListLoop)
 	@echo Donw Clean!

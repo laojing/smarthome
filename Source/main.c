@@ -12,11 +12,8 @@ signed char inbuf[BUFSIZE];
 double xtime[BUFSIZE/2];
 double signal[BUFSIZE/2];
 
-int main() {
-
-//	FILE *fi = fopen( "/home/laojing/stm/changjiang01.pcm", "rb" );
-//	FILE *fi = fopen( "/home/laojing/stm/changjiang02.pcm", "rb" );
-	FILE *fi = fopen( "/home/laojing/stm/cj-1.pcm", "rb" );
+void Calc( char *name ) {
+	FILE *fi = fopen( name, "rb" );
 	fread( inbuf, 1, BUFSIZE, fi );
 	for( int i=0; i<BUFSIZE; i+=2 ) {
 		signal[i/2] = (inbuf[i+1]*0xff + inbuf[i])/32768.0;
@@ -32,7 +29,7 @@ int main() {
 	int len = BUFSIZE/2 - 100*FRAME_MOV;
 
 	double noise_zero = NoiseZero( pSignal, len );
-	printf( "zero:%f\n", noise_zero );
+//	printf( "zero:%f\n", noise_zero );
 	for( int i=0; i<len; i++ ) {
 		pSignal[i] -= noise_zero;
 	}
@@ -46,15 +43,19 @@ int main() {
 
 	int valid_con = EndPoint( pSignal, len, noise_sum_max, noise_zero_max, valid_start, valid_end );
 
-	PlotY( pSignal, len );
+//	PlotY( pSignal, len );
 	printf( "valid_con:%d, %d\n", valid_con, valid_end[0], valid_start[0] );
 
+};
 
 
+int main() {
 
-
-
-
+	Calc( "/home/laojing/arm11/xiaoqu/00.pcm" );
+	Calc( "/home/laojing/arm11/xiaoqu/01.pcm" );
+	Calc( "/home/laojing/arm11/xiaoqu/02.pcm" );
+	Calc( "/home/laojing/arm11/xiaoqu/03.pcm" );
+	Calc( "/home/laojing/arm11/xiaoqu/04.pcm" );
 
 
 

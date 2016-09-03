@@ -7,9 +7,36 @@
 #include <sys/stat.h>
 
 #include "Template.h"
+#include "VoiceTemplate.h"
 #include "VoiceCMD.h"
 #include "../VoicePCM/VoicePCM.h"
 #include "../WaveLib/WaveLib.h"
+
+void 
+SaveRawWord( int fdsp, char *name ) {
+	char path[100];
+	signed char *buf = VoicePCMRecord( fdsp, TEMPSECOND );
+	sprintf( path, "%s/%s", TEMPLATEROOT, name );
+
+	if( access( path, 0 ) == -1 ) {
+		mkdir( path, 0777 );
+	}
+
+	for( int i=0; i<20; i++ ) {
+		sprintf( path, "%s/%s/%02d.pcm", TEMPLATEROOT, name, i );
+		if( access( path, 0 ) == -1 ) {
+
+			int fd = open( path, O_WRONLY|O_CREAT, 0777 );
+			write( fd, buf, TEMPSECOND*SECONDSIZE );
+			close( fd );
+			break;
+		}
+	}
+}
+
+
+
+
 
 double signal[CODESECOND*SECONDSIZE/2];
 

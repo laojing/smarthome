@@ -10,6 +10,7 @@
 #define STANDDIR "/root/mp3/voice/stand.pcm"
 #define TMPSTANDDIR "/root/mp3/voice/standtmp.pcm"
 
+
 #define MAXLENGTH 5    						// 最大存储秒数
 //#define CODESECOND MAXLENGTH    			// 口令辨识存储秒数
 #define CODESECOND 5    			// 口令辨识存储秒数

@@ -7,6 +7,7 @@
 
 #include "VoicePCM.h"
 #include "../VoiceCMD/VoiceCMD.h"
+#include "../VoiceCMD/VoiceTemplate.h"
 
 struct dnode{
 	char *cmd;
@@ -26,15 +27,15 @@ void *VoicePCMThread( void *ptrEndSignal ) {
 	}
 	VoiceMp3FileLoad();
 //	VoiceCodeStandInit();
-
 	VoiceTemplateInit();
-
 //	VoiceTemplateRecord( fdsp, "tuixia" );
 
+	SaveRawWord( fdsp, "xiaoqu" );
+	
 	int VoiceMode = 0;
 
-	while( !(*(int*)ptrEndSignal) ) {
-//	while( VoiceMode ) {
+//	while( !(*(int*)ptrEndSignal) ) {
+	while( VoiceMode ) {
 
 		// 语音控制模式
 		if( VoiceMode > 0 ) {
